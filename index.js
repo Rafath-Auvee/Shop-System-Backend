@@ -16,6 +16,15 @@ const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1,
 });
 
+const refreshBackend = async () => {
+  try {
+    await client.connect();
+    console.log(`Refreshed backend at ${new Date()}`);
+  } catch (err) {
+    console.error(`Error refreshing backend: ${err.message}`);
+  }
+};
+
 
 const run = async () => {
   try {
@@ -43,6 +52,8 @@ const run = async () => {
       const result = await productCollection.deleteOne({ _id: ObjectId(id) });
       res.send(result);
     });
+
+    setInterval(refreshBackend, 2 * 60 * 1000);
   } finally {
     console.log("Connected");
   }
