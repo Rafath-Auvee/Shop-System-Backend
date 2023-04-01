@@ -53,7 +53,7 @@ const run = async () => {
       res.send(result);
     });
 
-    setInterval(refreshBackend, 2 * 60 * 1000);
+    setInterval(refreshBackend, 5 * 60 * 1000);
   } finally {
     console.log("Connected");
   }
