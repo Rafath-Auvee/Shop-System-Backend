@@ -25,7 +25,6 @@ const refreshBackend = async () => {
   }
 };
 
-
 const run = async () => {
   try {
     const db = client.db("auveeTech");
@@ -58,7 +57,6 @@ const run = async () => {
     console.log("Connected");
   }
 };
-
 run().catch((err) => console.log(err));
 
 app.get("/", (req, res) => {
